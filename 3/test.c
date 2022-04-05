@@ -1,24 +1,32 @@
 #include <stdio.h>
  
-/* 函数声明 */
-void func1(void);
- 
-static int count=10;        /* 全局变量 - static 是默认的 */
- 
 int main()
 {
-  while (count--) {
-      func1();
-  }
-  return 0;
-}
- 
-void func1(void)
-{
-/* 'thingy' 是 'func1' 的局部变量 - 只初始化一次
- * 每次调用函数 'func1' 'thingy' 值不会被重置。
- */                
-  static int thingy=5;
-  thingy++; // thingy = thingy + 1; thingy += 1; ++y y++
-  printf(" thingy 为 %d ， count 为 %d\n", thingy, count);
+   int a = 21;
+   int b = 10;
+   int c ;
+#if 0
+   /*
+   c = a + b;
+   printf("Line 1 - c 的值是 %d\n", c );
+   c = a - b;
+   printf("Line 2 - c 的值是 %d\n", c );
+   c = a * b;
+   printf("Line 3 - c 的值是 %d\n", c );
+   c = a / b;
+   printf("Line 4 - c 的值是 %d\n", c );
+   c = a % b;
+   printf("Line 5 - c 的值是 %d\n", c );
+      */
+#endif
+   c = a++;  // 赋值后再加 1 ，c 为 21，a 为 22
+   printf("Line 6 - c 的值是 %d\n", c );
+   c = a--;  // 赋值后再减 1 ，c 为 22 ，a 为 21
+   printf("Line 7 - c 的值是 %d\n", c );
+
+
+   c = ++a;  //先自加1， 然后再赋值。 a 22 c 22
+   printf("value of c is %d, value of a is %d \n",c , a);
+
+   c = --a; // 先自减1， 然后再赋值， a 21 , c 21
 }
